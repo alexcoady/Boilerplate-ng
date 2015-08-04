@@ -19,6 +19,7 @@
     "modernizr": "~2.8.3"
   },
   "devDependencies": {
-    "angular-route": "~1.4.3"
+    "angular-route": "~1.4.3",
+    "angular-resource": "~1.4.3"
   }
 }

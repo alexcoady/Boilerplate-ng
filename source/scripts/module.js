@@ -1,4 +1,4 @@
-angular.module("App", ["ngRoute"])
+angular.module("App", ["ngRoute", "ngResource"])
 .constant("ROUTES", {
   TAGS: "tags/",
   POSTS: "posts/",
@@ -8,6 +8,14 @@ angular.module("App", ["ngRoute"])
   ROOT: "http://api.tumblr.com/v2/blog/coadycode.tumblr.com/",
   POSTS: "posts/",
   AUTH: "?api_key=7jkDyxXAcJrTe6zMnkFFY6QcCwN3JgqEZ2CvZxeVk1GOYSVg0H&callback=JSON_CALLBACK"
+})
+.filter("firstline", function () {
+
+  return function ( input ) {
+
+    if ( !input ) return "";
+    return input.substring( 0, input.indexOf("\n") );
+  };
 })
 .config([ "$routeProvider", "$locationProvider", function ( $routeProvider, $locationProvider ) {
 

@@ -1,6 +1,6 @@
 <h3>
   <a href="{{ ROUTES.ROOT }}{{ ROUTES.POSTS }}{{ id }}">
-    {{ caption | limitTo: 50 }}
+    {{ caption | firstline }}
   </a>
 </h3>
 <div class="Post-tags">
