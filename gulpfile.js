@@ -73,13 +73,21 @@ gulp.task("copy:html", function () {
     .pipe( gulp.dest("./build/") );
 });
 
-gulp.task("copy", [ "copy:html", "copy:bower" ]);
+gulp.task("copy:templates", function () {
+
+  gulp.src( ["./source/templates/**/*.html"] )
+    .pipe( gulp.dest("./build/templates") );
+});
+
+gulp.task("copy", [ "copy:html", "copy:templates", "copy:bower" ]);
 
 gulp.task("default", [  "scripts", "sass", "copy" ]);
 
 gulp.task("watch", ["default", "browserSync"], function () {
+
   gulp.watch([ "./source/**/*.js" ], ["scripts"]);
   gulp.watch([ "./source/*.html" ], [ "copy:html", browserSync.reload ] );
+  gulp.watch([ "./source/templates/**/*.html" ], [ "copy:templates", browserSync.reload ] );
   gulp.watch([ "./source/style/**/*.scss" ], [ "sass" ]);
 
   gulp.watch([ "./build/**/*.{js,html,css}" ], browserSync.reload );

@@ -1,0 +1,15 @@
+<h3>
+  <a href="{{ ROUTES.ROOT }}{{ ROUTES.POSTS }}{{ id }}">
+    {{ caption | limitTo: 50 }}
+  </a>
+</h3>
+<div class="Post-tags">
+  <ul>
+    <li ng-repeat="tag in tags">
+      <a href="{{ ROUTES.ROOT }}{{ ROUTES.TAGS }}{{ tag }}">{{ tag }}</a>
+    </li>
+  </ul>
+</div>
+<div class="Post-photo">
+  <img ng-src="{{ photos[0].alt_sizes[ photos[0].alt_sizes.length - 1 ].url }}" alt="" />
+</div>
