@@ -1,4 +1,4 @@
-angular.module("App", ["ngRoute", "ngResource"])
+angular.module("App", ["ngRoute", "ngResource", "ngAnimate"])
 .constant("ROUTES", {
   TAGS: "tags/",
   POSTS: "posts/",
