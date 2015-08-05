@@ -16,25 +16,4 @@ angular.module("App", ["ngRoute", "ngResource", "ngAnimate"])
     if ( !input ) return "";
     return input.substring( 0, input.indexOf("\n") );
   };
-})
-.config([ "$routeProvider", "$locationProvider", function ( $routeProvider, $locationProvider ) {
-
-  $locationProvider.html5Mode(true);
-
-  $routeProvider
-    .when("/posts/:id", {
-      templateUrl: "templates/post.html",
-      controller: "PostController"
-    })
-    .when("/posts", {
-      templateUrl: "templates/posts.html",
-      controller: "PostsController"
-    })
-    .when("/tags/:tag", {
-      templateUrl: "templates/posts.html",
-      controller: "PostsController"
-    })
-    .otherwise({
-      redirectTo: "/posts"
-    });
-}]);
+});

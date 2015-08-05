@@ -1,16 +1,6 @@
 angular.module("App")
-.controller("PostsController", [ "Post", "$routeParams", "$scope", function ( Post, $routeParams, $scope) {
+.controller("PostsController", [ "Post", "$routeParams", "$scope", "data", function ( Post, $routeParams, $scope, data) {
 
-  var promise;
-
-  $scope.posts = [];
-
-  if ( $routeParams.tag ) promise = Post.tag( $routeParams.tag );
-
-  if ( !promise ) promise = Post.all();
-
-  promise.then(function (data) {
-    $scope.posts = data.response.posts;
-  });
+  $scope.posts = data.response.posts;
 
 }]);
