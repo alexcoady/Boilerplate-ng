@@ -8,30 +8,36 @@ angular.module("App")
       templateUrl: "templates/post.html",
       controller: "PostController",
       resolve: {
-        data: function ( $route, Post ) {
+        data: [ "$route", "Post", function ( $route, Post ) {
           return Post.get( $route.current.params.id );
-        }
+        }]
       }
     })
     .when("/posts", {
       templateUrl: "templates/posts.html",
       controller: "PostsController",
       resolve: {
-        data: function ( Post ) {
+        data: ["Post", function ( Post ) {
           return Post.all();
-        }
+        }]
       }
     })
     .when("/tags/:tag", {
       templateUrl: "templates/posts.html",
       controller: "PostsController",
       resolve: {
-        data: function ( $route, Post ) {
+        data: [ "$route", "Post", function ( $route, Post ) {
           return Post.tag( $route.current.params.tag );
-        }
+        }]
       }
     })
     .otherwise({
-      redirectTo: "/posts"
+      templateUrl: "templates/posts.html",
+      controller: "PostsController",
+      resolve: {
+        data: [ "Post", function ( Post ) {
+          return Post.all();
+        }]
+      }
     });
 }]);

@@ -1,5 +1,5 @@
 <div class="Nav">
-  <a href="{{ ROUTES.ROOT }}">Home</a>
-  <a href="{{ ROUTES.ROOT }}{{ ROUTES.TAGS }}work">Work</a>
-  <a href="{{ ROUTES.ROOT }}{{ ROUTES.TAGS }}blog">Blog</a>
+  <a ng-class="{'is-active': isActive(ROUTES.ROOT)}" href="{{ ROUTES.ROOT }}">Home</a>
+  <a ng-class="{'is-active': isActive(ROUTES.ROOT + ROUTES.TAGS + 'work')}" href="{{ ROUTES.ROOT }}{{ ROUTES.TAGS }}work">Work</a>
+  <a ng-class="{'is-active': isActive(ROUTES.ROOT + ROUTES.TAGS + 'blog')}" href="{{ ROUTES.ROOT }}{{ ROUTES.TAGS }}blog">Blog</a>
 </div>

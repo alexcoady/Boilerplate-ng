@@ -1,5 +1,5 @@
 angular.module("App")
-.directive("appNav", function () {
+.directive("appNav", function ( $location ) {
 
   return {
     restrict: "A",
@@ -7,6 +7,11 @@ angular.module("App")
     controller: function ( $scope, ROUTES ) {
 
       $scope.ROUTES = ROUTES;
+
+      $scope.isActive = function ( url ) {
+
+        return $location.url() === url;
+      };
     }
   };
 });
