@@ -7,50 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/main.css">
     <base href="/">
-
-    <style media="screen">
-
-      .view-animate-wrapper {
-        position: relative;
-      }
-
-      .view-animate.ng-enter,
-      .view-animate.ng-leave {
-        transition-duration: .35s;
-      }
-
-      .view-animate.ng-enter-active,
-      .view-animate.ng-leave-active {
-        position: absolute;
-        top: 0:
-        right: 0;
-        left: 0;
-      }
-
-      .view-animate.ng-enter {
-        opacity: 0;
-      }
-
-      .view-animate.ng-enter.ng-enter-active {
-        opacity: 1;
-      }
-
-      .view-animate.ng-leave {
-        opacity: 1;
-      }
-
-      .view-animate.ng-leave.ng-leave-active {
-        opacity: 0;
-      }
-    </style>
-
   </head>
   <body>
 
-    <nav app-nav></nav>
+    <div class="Page-nav">
+      <nav app-nav></nav>
+    </div>
 
-    <div class="view-animate-wrapper">
-      <div ng-view class="view-animate"></div>
+
+    <div class="Page-wrapper">
+      <div ng-view class="Page-item"></div>
     </div>
 
 

@@ -1,1 +1,59 @@
+@import "reset";
 @import "components/nav";
+
+html, body {
+  height: 100%;
+}
+
+.Page-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.Page-wrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 50;
+}
+
+.Page-item {
+  min-height: 100%;
+  background: #EAEAEA;
+}
+
+.Page-item.ng-enter,
+.Page-item.ng-leave {
+  transition-duration: 1.35s;
+}
+
+.Page-item.ng-enter-active,
+.Page-item.ng-leave-active {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.Page-item.ng-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+
+.Page-item.ng-enter.ng-enter-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.Page-item.ng-leave {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.Page-item.ng-leave.ng-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}

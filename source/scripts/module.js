@@ -4,11 +4,6 @@ angular.module("App", ["ngRoute", "ngResource", "ngAnimate"])
   POSTS: "posts/",
   ROOT: "/"
 })
-.constant("API", {
-  ROOT: "http://api.tumblr.com/v2/blog/coadycode.tumblr.com/",
-  POSTS: "posts/",
-  AUTH: "?api_key=7jkDyxXAcJrTe6zMnkFFY6QcCwN3JgqEZ2CvZxeVk1GOYSVg0H&callback=JSON_CALLBACK"
-})
 .filter("firstline", function () {
 
   return function ( input ) {

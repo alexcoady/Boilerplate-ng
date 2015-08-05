@@ -1,4 +1,9 @@
 angular.module("App")
+.constant("API", {
+  ROOT: "http://api.tumblr.com/v2/blog/coadycode.tumblr.com/",
+  POSTS: "posts/",
+  AUTH: "?api_key=7jkDyxXAcJrTe6zMnkFFY6QcCwN3JgqEZ2CvZxeVk1GOYSVg0H&callback=JSON_CALLBACK"
+})
 .factory("Post", [ "$http", "$q", "$cacheFactory", "API", function PostFactory ( $http, $q, $cacheFactory, API ) {
 
   var api = API.ROOT + API.POSTS + API.AUTH + "&filter=text";
