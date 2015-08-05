@@ -1,26 +1,28 @@
 angular.module("App")
-.factory("Post", [ "$http", "$q","API", function PostFactory ( $http, $q, API ) {
+.factory("Post", [ "$http", "$q", "$cacheFactory", "API", function PostFactory ( $http, $q, $cacheFactory, API ) {
 
   var api = API.ROOT + API.POSTS + API.AUTH + "&filter=text";
 
-  var all;
   var tags = {};
   var posts = {};
+
+  var cache = $cacheFactory("posts");
 
   return {
     all: function () {
 
       var deferred = $q.defer();
+      var result;
 
-      if ( all ) {
-        deferred.resolve( all );
+      if ( cache.get("all") ) {
+        deferred.resolve( cache.get("all") );
         return deferred.promise;
       }
 
       $http.jsonp(api).success(function (data) {
         deferred.resolve(data);
-        all = data;
-      }).error(function (data, status, headers, config) {
+        cache.put("all", data);
+      }).error(function (data, status) {
         deferred.reject("Error: request returned status:", status);
       });
 
@@ -31,14 +33,14 @@ angular.module("App")
 
       var deferred = $q.defer();
 
-      if ( tags[tag] ) {
-        deferred.resolve( tags[tag] );
+      if ( cache.get("tag-" + tag) ) {
+        deferred.resolve( cache.get("tag-" + tag) );
         return deferred.promise;
       }
 
       $http.jsonp(api + "&tag=" + tag).success(function (data) {
         deferred.resolve(data);
-        tags[tag] = data;
+        cache.put("tag-" + tag, data);
       }).error(function (data, status, headers, config) {
         deferred.reject("Error: request returned status:", status);
       });
@@ -50,14 +52,14 @@ angular.module("App")
 
       var deferred = $q.defer();
 
-      if ( posts[id] ) {
-        deferred.resolve( posts[id] );
+      if ( cache.get("post-" + id) ) {
+        deferred.resolve( cache.get("post-" + id) );
         return deferred.promise;
       }
 
       $http.jsonp(api + "&id=" + id).success(function (data) {
         deferred.resolve(data);
-        posts[id] = data;
+        cache.put("post-" + id, data);
       }).error(function (data, status, headers, config) {
         deferred.reject("Error: request returned status:", status);
       });

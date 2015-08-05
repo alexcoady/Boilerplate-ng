@@ -28,13 +28,7 @@ angular.module("App", ["ngRoute", "ngResource", "ngAnimate"])
     })
     .when("/posts", {
       templateUrl: "templates/posts.html",
-      controller: "PostsController",
-      resolve: {
-        posts: function ( Post ) {
-          console.log(Post);
-          return Post.all();
-        }
-      }
+      controller: "PostsController"
     })
     .when("/tags/:tag", {
       templateUrl: "templates/posts.html",
